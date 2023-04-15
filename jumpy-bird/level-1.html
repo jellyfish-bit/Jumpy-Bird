@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flappy Bird</title>
-    <link rel="stylesheet" href="levels/ending/level-style.css">
+    <link rel="stylesheet" href="levels/level-style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/flappy_bird_icon.png">
     <style>
       :root {
@@ -15,6 +15,7 @@
     </style>
   </head>
   <body>
+
     <div style="display: none">
       <img id="blue_bird" src="images/blue_flappy_bird.png"/>
       <img id="blue_bird_flap" src="images/blue_flappy_bird_flap.png"/>
@@ -33,7 +34,8 @@
       <img id="waterstaff-hand" src="images/accessories/waterstaff.png"/>  
     
     </div>
-    
+
+  
 
     <div id="lost-menu" class="game-end-menu">
       <h1>Game-over!</h1>
@@ -54,16 +56,16 @@
 
     <div class="container">
       <div class="top-info">
-        <a href="index.html" class="menu-link top-info-style">Menu</a>
+        <a href="level-selection.html" class="menu-link top-info-style">Menu</a>
         <span class="top-info-style" >Score: <span id="score-top">0</span>/50</span>
         <span class="top-info-style">Your Best: <span  id="highscore-top">0</span>/50</span>
       </div>
       <canvas id ="myCanvas" width="680" height="640"></canvas>
     </div>
 
-    <span id="level-info" data-levelid="1" data-levelspeed="1" data-pipegap="250" data-pipecount="2" data-endscore="50">Test</span>
+    <span id="level-info" data-levelid="1" data-levelspeed="1" data-pipegap="250" data-pipecount="2" data-endscore="50" style="display: none;">Test</span>
     
     
-    <script id="level-info"  src="levels/ending/level.js"></script>
+    <script id="level-info"  src="levels/level.js"></script>
   </body>
 </html>

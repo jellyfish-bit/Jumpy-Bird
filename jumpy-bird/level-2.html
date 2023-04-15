@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flappy Bird</title>
-    <link rel="stylesheet" href="levels/ending/level-style.css">
+    <link rel="stylesheet" href="levels/level-style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/flappy_bird_icon.png">
     <style>
       :root {
@@ -54,16 +54,16 @@
 
     <div class="container">
       <div class="top-info">
-        <a href="index.html" class="menu-link top-info-style">Menu</a>
+        <a href="level-selection.html" class="menu-link top-info-style">Menu</a>
         <span class="top-info-style" >Score: <span id="score-top">0</span>/60</span>
         <span class="top-info-style">Your Best: <span  id="highscore-top">0</span>/60</span>
       </div>
       <canvas id ="myCanvas" width="680" height="640"></canvas>
     </div>
 
-    <span id="level-info" data-levelid="2" data-levelspeed="2" data-pipegap="200" data-pipecount="2" data-endscore="60">Test</span>
+    <span id="level-info" data-levelid="2" data-levelspeed="2" data-pipegap="200" data-pipecount="2" data-endscore="60" style="display: none;">Test</span>
     
     
-    <script id="level-info"  src="levels/ending/level.js"></script>
+    <script id="level-info"  src="levels/level.js"></script>
   </body>
 </html>

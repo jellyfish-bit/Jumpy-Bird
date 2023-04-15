@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flappy Bird</title>
-    <link rel="stylesheet" href="levels/endless/endless-style.css">
+    <link rel="stylesheet" href="levels/level-style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/flappy_bird_icon.png">
     <style>
       :root {
-        --bc1: rgb(175, 0, 108);
-        --bc2: rgb(105, 2, 65);
+        --bc2:rgb(159, 143, 21);
+        --bc1:rgb(193, 198, 42);
       }
     </style>
   </head>
   <body>
+
     <div style="display: none">
       <img id="blue_bird" src="images/blue_flappy_bird.png"/>
       <img id="blue_bird_flap" src="images/blue_flappy_bird_flap.png"/>
@@ -33,27 +34,38 @@
       <img id="waterstaff-hand" src="images/accessories/waterstaff.png"/>  
     
     </div>
-    
 
-    <div id="end-menu">
+  
+
+    <div id="lost-menu" class="game-end-menu">
       <h1>Game-over!</h1>
       <h3>Score: <span id="end-menu-score">0</span></h3>
-      <h3>Your Best: <span id="end-menu-highscore">0</span></h3>
+      <h3>Highscore: <span id="end-menu-highscore">0</span></h3>
 
       <button class="try-again-button" onclick="restartButton()">Try Again</button>
+    </div>
+
+    <div id="won-menu" class="game-end-menu">
+      <h1>Game-Won!</h1>
+      <h3>Score: </h3>
+      <button class="try-again-button" onclick="restartButton()">Play Again</button>
+      <button class="try-again-button" onclick="nextLevelButton('level-1')">Next Level</button>
+
     </div>
 
 
     <div class="container">
       <div class="top-info">
-        <a href="index.html" class="menu-link top-info-style">Menu</a>
-        <span class="top-info-style" id="score-top">Score: 0</span>
-        <span class="top-info-style" id="highscore-top">High Score: 0</span>
+        <a href="level-selection.html" class="menu-link top-info-style">Menu</a>
+        <span class="top-info-style" >Score: <span id="score-top">0</span></span>
+        <span class="top-info-style">Highscore: <span  id="highscore-top">0</span></span>
       </div>
       <canvas id ="myCanvas" width="680" height="640"></canvas>
     </div>
 
+    <span id="level-info" data-levelid="0" data-levelspeed="3" data-pipegap="150" data-pipecount="3" data-endscore="10" style="display: none;">Test</span>
     
-    <script src="levels/endless/endless.js"></script>
+    
+    <script id="level-info"  src="levels/level.js"></script>
   </body>
 </html>

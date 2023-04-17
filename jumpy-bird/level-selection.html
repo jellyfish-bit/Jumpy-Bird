@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumpy Bird</title>
+  <link rel="stylesheet" href="level-selection/level-selection-style.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="player-profile" id="player-profile">
+      <a href="index.html" id="player-profile-name" class="player-profile-name">Name</a>
+    </div>
+  </div>
+
+
+  <h1 class="heading-style">Jumpy Bird</h1>
+  <div style="transform: scale(0.9);">
+    <div class="container">
+      <h2 class="container-heading">Levels</h2><br>
+
+
+      <div class="level-container">
+        <a href="level-1.html" class="level-style" id="level1">Level 1 &#x2716;</a>
+        <a href="level-2.html" class="level-style" id="level2">Level 2 &#x2716;</a>
+        <a href="level-3.html" class="level-style" id="level3">Level 3 &#x2716;</a>
+        <a href="endless.html" class="level-style" id="endless">Endless Mode</a>
+
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h2 class="container-heading">Bird Styles</h2>
+      <div class="image-container">
+        <span id="blue-bird-hover" class="image-span" data-tilte="This is the starter bird">
+          <img class="item-image" id="blue-bird" src="images/blue_flappy_bird.png"
+            onclick="birdColorPressed('blue', 0)" />
+        </span>
+        <span id="red-bird-hover" class="image-span" data-title="You need to complete at least 1 level">
+          <img class="item-image" id="red-bird" src="images/flappy_bird_grayed.png"
+            onclick="birdColorPressed('red', 1)" />
+        </span>
+        <span id="green-bird-hover" class="image-span" data-title="You need to complete at least 2 levels">
+          <img class="item-image" id="green-bird" src="images/flappy_bird_grayed.png"
+            onclick="birdColorPressed('green', 2)" />
+        </span>
+
+        <span id="yellow-bird-hover" class="image-span" data-title="You need to complete at least 3 levels">
+          <img class="item-image" id="yellow-bird" src="images/flappy_bird_grayed.png"
+            onclick="birdColorPressed('yellow', 3)" />
+        </span>
+      </div>
+
+      <h2 class="container-heading">Bird Accessories</h2>
+      <div class="image-container">
+
+        <span id="crown-hover" class="image-span" data-title="Earn a score of 10 in Endless Mode" data-score="10"
+          data-level="0">
+          <img class="item-image" id="crown-head" src="images/accessories/crown_grayed.png"
+            onclick="headAccsPressed('crown')" />
+        </span>
+        <span id="royal-hover" class="image-span" data-title="Earn a score of 20 in Endless Mode" data-score="20"
+          data-level="0">
+          <img class="item-image" id="royal-head" src="images/accessories/crown_grayed.png"
+            onclick="headAccsPressed('royal')" />
+        </span>
+        <span id="magic-hover" class="image-span" data-title="Earn a score of 30 in Endless Mode" data-score="30"
+          data-level="0">
+          <img class="item-image" id="magic-head" src="images/accessories/magic_grayed.png"
+            onclick="headAccsPressed('magic')" />
+        </span>
+
+        <span id="blaststaff-hover" class="image-span"
+          data-title="Earn a score of 15 in Endless Mode and complete 1 level" data-score="15" data-level="1">
+          <img class="item-image" id="blaststaff-hand" src="images/accessories/blaststaff_grayed.png"
+            onclick="handAccsPressed('blaststaff')" />
+        </span>
+        <span id="waterstaff-hover" class="image-span"
+          data-title="Earn a score of 45 in Endless Mode and complete 3 levels" data-score="45" data-level="3">
+          <img class="item-image" id="waterstaff-hand" src="images/accessories/waterstaff_grayed.png"
+            onclick="handAccsPressed('waterstaff')" />
+        </span>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="container-heading">Settings</h2>
+      <div class="settings-container">
+
+        <div class="setting-box">
+          <h4 class="setting-heading">Easy Mode</h4>
+          <label class="settings-switch" onclick="settingsChanged()">
+            <input type="checkbox" id="setting-easy-mode">
+            <span class="slider round"></span>
+          </label> 
+        </div>
+        <div class="setting-box">
+          <h4 class="setting-heading">Show Fps</h4>
+          <label class="settings-switch" onclick="settingsChanged()">
+            <input type="checkbox" id="setting-fps">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="setting-box">
+          <h4 class="setting-heading">Cap Fps</h4>
+          <label class="settings-switch" onclick="settingsChanged()">
+            <input type="checkbox" id="setting-fps-cap">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="level-selection/level-selection.js"></script>
+
+</body>
+
+</html>

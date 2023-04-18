@@ -1,5 +1,5 @@
 const dbName = "PlayerDataBase";
-const request = indexedDB.open(dbName, 5);
+const request = indexedDB.open(dbName, 6);
 const playerId = Number(sessionStorage.getItem("currentPlayerId"));
 let db;
 

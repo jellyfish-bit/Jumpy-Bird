@@ -74,14 +74,7 @@ body {
 
 }
 
-.container-heading {
-    display: block;
-    font-size: 30px;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
 
-}
 
 .level-container {
     display: block;
@@ -114,6 +107,33 @@ body {
 }
 
 .level-style:active {
+    opacity: 0.7;
+}
+.level-style-board {
+    display: block;
+
+    border: 3px;
+    border-radius: 10px;
+    max-width: 200px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-inline: auto;
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    font-family: serif;
+    font-size: 20px;
+    font-style: usn;
+    background-color: var(--highlight-color);
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+.level-style-board:hover {
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.35);
+}
+
+.level-style-board:active {
     opacity: 0.7;
 }
 

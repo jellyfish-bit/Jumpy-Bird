@@ -1,7 +1,9 @@
 const dbName = "PlayerDataBase";
-const request = indexedDB.open(dbName, 5);
+const request = indexedDB.open(dbName, 6);
 let db;
 let editMode = false;
+const nullDate = new Date(0).valueOf();
+
 
 request.onerror = (event) => {
   console.error("IndexDB is not allowed");
@@ -27,12 +29,18 @@ request.onupgradeneeded = (event) => {
   objectLevelDataStore.createIndex("highscoreLevel2", "highscoreLevel2", { unique: false });
   objectLevelDataStore.createIndex("highscoreLevel3", "highscoreLevel3", { unique: false });
   objectLevelDataStore.createIndex("highscoreEndless", "highscoreEndless", { unique: false });
+  objectLevelDataStore.createIndex("completeLevelDate1", "completeLevelDate1", { unique: false });
+  objectLevelDataStore.createIndex("completeLevelDate2", "completeLevelDate2", { unique: false });
+  objectLevelDataStore.createIndex("completeLevelDate3", "completeLevelDate3", { unique: false });
+  objectLevelDataStore.createIndex("endlessDate", "endlessDate", { unique: false });
+  
+
 
   const objectSettingsStore = dbUp.createObjectStore("playerSettingData", { keyPath: "playerId" });
   objectSettingsStore.createIndex("easyMode", "easyMode", { unique: false });
   objectSettingsStore.createIndex("showFps", "showFPs", { unique: false });
   objectSettingsStore.createIndex("capFps", "capFps", { unique: false });
-
+  
 };
 request.onsuccess = (event) => {
   console.log("Success Opening")
@@ -57,8 +65,6 @@ document.getElementsByClassName("edit-profile-update-button")[0].addEventListene
   switchProfileCreationButton(false, "edit")
 
 });
-
-
 
 
 function renderPlayerById(pPlayerId) {
@@ -212,7 +218,13 @@ function createNewPlayerLevelData(pPlayerId) {
     highscoreLevel1: 0,
     highscoreLevel2: 0,
     highscoreLevel3: 0,
-    highscoreEndless: 0
+    highscoreEndless: 0,
+    completeLevelDate1: nullDate,
+    completeLevelDate2: nullDate,
+    completeLevelDate3: nullDate,
+    endlessDate: nullDate
+
+
   }
 }
 function createNewPlayerAccsData(pPlayerId) {
@@ -232,13 +244,7 @@ function createNewPlayerSettingData(pPlayerId) {
   }
 }
 
-function getContrastYIQ(hexcolor) {
-  var r = parseInt(hexcolor.substring(1, 3), 16);
-  var g = parseInt(hexcolor.substring(3, 5), 16);
-  var b = parseInt(hexcolor.substring(5, 7), 16);
-  var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-  return (yiq >= 128) ? '#101015' : '#e2e2e2';
-}
+
 
 function profilePressed(event) {
   if (editMode) {
@@ -320,24 +326,24 @@ function openEditProfile(pPlayerId) {
         document.getElementById("edit-profile-level-1").innerText = "\u2713";
       }
       else {
-        document.getElementById("edit-profile-level-1").innerText = "\u2716 Your Best: " + event.target.result.highscoreLevel1;
+        document.getElementById("edit-profile-level-1").innerText = "\u2716 Your Best: " + floorScore(event.target.result.highscoreLevel1);
       }
       if (Boolean(event.target.result.completeLevel2)) {
         document.getElementById("edit-profile-level-2").innerText = "\u2713";
       }
       else {
-        document.getElementById("edit-profile-level-2").innerText = "\u2716 Your Best: " + event.target.result.highscoreLevel2;
+        document.getElementById("edit-profile-level-2").innerText = "\u2716 Your Best: " + floorScore(event.target.result.highscoreLevel2);
       }
       if (Boolean(event.target.result.completeLevel3)) {
         document.getElementById("edit-profile-level-3").innerText = "\u2713";
       }
       else {
-        document.getElementById("edit-profile-level-3").innerText = "\u2716 Your Best: " + event.target.result.highscoreLevel3;
+        document.getElementById("edit-profile-level-3").innerText = "\u2716 Your Best: " + floorScore(event.target.result.highscoreLevel3);
       }
 
 
 
-      document.getElementById("edit-profile-endless").innerText = Math.floot(event.target.result.highscoreEndless / 60);
+      document.getElementById("edit-profile-endless").innerText = floorScore(event.target.result.highscoreEndless / 60);
 
     }
 }
@@ -389,6 +395,20 @@ function resetInputValues(pName) {
   document.getElementById(pName + "-preview-profile").removeAttribute("style");
 
 
+}
+
+function getContrastYIQ(hexcolor) {
+  const r = parseInt(hexcolor.substring(1, 3), 16);
+  const g = parseInt(hexcolor.substring(3, 5), 16);
+  const b = parseInt(hexcolor.substring(5, 7), 16);
+  const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+  return (yiq >= 128) ? '#101015' : '#e2e2e2';
+}
+function floorScore(pScore) {
+  if(pScore === undefined) {
+    return 0;
+  }
+  return Math.floor(pScore/60);
 }
 
 

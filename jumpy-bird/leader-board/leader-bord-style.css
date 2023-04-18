@@ -1,0 +1,84 @@
+:root {
+  --dark_gray: rgb(32, 32, 32);
+  --white: whitesmoke;
+  --light-gray: rgb(184, 184, 184);
+  --black: rgb(19, 19, 19);
+
+
+
+}
+
+body {
+  background-color: var(--black);
+  color: var(--text-color);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: end;
+
+}
+
+.player-profile {
+  display: table;
+  text-align: center;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  font-weight: 100;
+
+  border: 1px solid;
+  border-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.player-profile-name {
+  display: table-cell;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 10%;
+  font-weight: 100;
+
+}
+
+.heading-style {
+  text-align: center;
+  color: var(--white);
+}
+
+.list-container {
+  display: block;
+  max-width: 300px;
+  margin: 10px auto;
+  border: 5px;
+  border-radius: 10px;
+  background-color: var(--dark_gray);
+  padding: 20px;
+  
+
+
+}
+.list-container-heading {
+  font-weight: 700;
+  
+}
+.list-item {
+  display: flex;
+  border: 2px solid;
+  justify-content: space-between;
+  
+  border-radius: 8px;
+  padding: 5px;
+  margin: 10px auto;
+  max-width: 250px;
+  font-size: 18px;
+
+  /*background-color: darkblue;
+  color: white;
+  border-color: white;*/
+  
+  
+
+}
+

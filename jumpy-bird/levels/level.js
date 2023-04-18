@@ -4,7 +4,7 @@ const screenWidth = canvas.clientWidth;
 const screenHeight = canvas.clientHeight;
 
 const dbName = "PlayerDataBase";
-const request = indexedDB.open(dbName, 5);
+const request = indexedDB.open(dbName, 6);
 const playerId = Number(sessionStorage.getItem("currentPlayerId"));
 let db;
 
@@ -35,7 +35,7 @@ let handAccessory = accsStats.handName;
 const bonusLives = accsStats.bonusLives;
 let staffUsage = accsStats.staffUsage;
 let shieldDurability = accsStats.shieldDurability;
-const scoreMultiplier = accsStats.scoreMultiplier;
+let scoreMultiplier = accsStats.scoreMultiplier;
 const accelerationDecrease = accsStats.accelerationDecrease;
 //accs end
 //set
@@ -499,19 +499,25 @@ function saveLevelComplete() {
   request.onsuccess = (event) => {
 
     const data = event.target.result;
+    const currentDate = Date.now();
 
 
     if (levelNumber === 1) {
       data.completeLevel1 = true;
       data.highscoreLevel1 = bestScore;
+      data.completeLevelDate1 = currentDate;
 
     } else if (levelNumber === 2) {
       data.completeLevel2 = true;
       data.highscoreLevel2 = bestScore;
+      data.completeLevelDate2 = currentDate;
+
 
     } else if (levelNumber === 3) {
       data.completeLevel3 = true;
       data.highscoreLevel3 = bestScore;
+      data.completeLevelDate3 = currentDate;
+
 
     }
 
@@ -561,6 +567,7 @@ function applyEasyMode() {
     pipe.updateGapSize(pipeGapSize * 1.5);
   });
   drawCurrentLives(4, 5, 10);
+  scoreMultiplier++;
 
 }
 

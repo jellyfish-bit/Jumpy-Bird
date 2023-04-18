@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumpy Bird</title>
+  <link rel="stylesheet" href="leader-board/leader-bord-style.css">
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="player-profile" id="player-profile">
+      <a href="index.html" id="player-profile-name" class="player-profile-name">Name</a>
+    </div>
+  </div>
+
+  
+  <h1 class="heading-style">Score Board</h1>
+
+  <div class="container-all">
+   
+    <div class="list-container" id="page-1">
+      <h2 class="list-container-heading">Endless</h2>
+      <div id="endless-container" class="list"></div>
+      <p class="list-selected-dots">
+        <a href="#page-1" class="list-dots">&#9632;</a>
+        <a href="#page-2" class="list-dots">&#9633;</a>
+        <a href="#page-3" class="list-dots">&#9633;</a>
+        <a href="#page-4" class="list-dots">&#9633;</a>
+      </p>
+    </div>
+    
+    <div class="list-container" id="page-2">
+      <h2 class="list-container-heading">Level 1</h2>
+      <div id="level1-container" class="list"></div>
+      <p class="list-selected-dots">
+        <a href="#page-1" class="list-dots">&#9633;</a>
+        <a href="#page-2" class="list-dots">&#9632;</a>
+        <a href="#page-3" class="list-dots">&#9633;</a>
+        <a href="#page-4" class="list-dots">&#9633;</a>
+      </p>
+    </div>
+
+    <div class="list-container" id="page-3">
+      <h2 class="list-container-heading">Level 2</h2>
+      <div id="level2-container" class="list"></div>
+      <p class="list-selected-dots">
+        <a href="#page-1" class="list-dots">&#9633;</a>
+        <a href="#page-2" class="list-dots">&#9633;</a>
+        <a href="#page-3" class="list-dots">&#9632;</a>
+        <a href="#page-4" class="list-dots">&#9633;</a>
+      </p>
+    </div>
+    
+    <div class="list-container" id="page-4">
+      <h2 class="list-container-heading">Level 3</h2>
+      <div id="level3-container" class="list"></div>
+      <p class="list-selected-dots">
+        <a href="#page-1" class="list-dots">&#9633;</a>
+        <a href="#page-2" class="list-dots">&#9633;</a>
+        <a href="#page-3" class="list-dots">&#9633;</a>
+        <a href="#page-4" class="list-dots">&#9632;</a>
+      </p>
+    </div>
+  </div>
+
+  <a href="level-selection.html" class="back-link">Back</a>
+  <script src="leader-board/leader-board.js"></script>
+
+
+</body>
+
+</html>

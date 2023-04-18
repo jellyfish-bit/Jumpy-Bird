@@ -36,12 +36,12 @@ function fillScoreList() {
       scoreList = scoreList.sort((a, b) => {
         return Number(b.score) - Number(a.score);
       });
-      fillScoreBoardList();
+      evaluateScoreList();
     }
 
   }
 }
-function fillScoreBoardList() {
+function evaluateScoreList() {
   let number;
   scoreList.forEach((idSc, index) => {
     db.transaction("players").objectStore("players")
@@ -51,6 +51,73 @@ function fillScoreBoardList() {
       }
 
   });
+}
+function fillDateList() {
+  const objectStoreLD = db.transaction("playerLevelData").objectStore("playerLevelData");
+
+  objectStoreLD.openCursor().onsuccess = (event) => {
+    const cursorLD = event.target.result;
+    if (cursorLD) {
+
+
+      dateList.push({
+        id: cursorLD.key,
+        date1: cursorLD.value.completeLevelDate1,
+        date2: cursorLD.value.completeLevelDate2,
+        date3: cursorLD.value.completeLevelDate3,
+        score1: cursorLD.value.highscoreLevel1,
+        score2: cursorLD.value.highscoreLevel2,
+        score3: cursorLD.value.highscoreLevel3
+
+      });
+
+
+
+      cursorLD.continue();
+    } else {
+      evaluateDateList();
+    }
+
+  }
+}
+function evaluateDateList() {
+
+  const sortedDateList1 = dateList.sort((a, b) => {
+    return Number(b.date1) - Number(a.date1);
+  });
+  const sortedDateList2 = dateList.sort((a, b) => {
+    return Number(b.date2) - Number(a.date2);
+  });
+  const sortedDateList3 = dateList.sort((a, b) => {
+    return Number(b.date3) - Number(a.date3);
+  });
+  sortedDateList1.forEach((idDa1, index1) => {
+    db.transaction("players").objectStore("players")
+      .get(Number(idDa1.id)).onsuccess = (event) => {
+
+        renderPlayerLevel(event.target.result.playerName, (index1 + 1), idDa1.score1,
+          idDa1.date1, event.target.result.playerColor, 1);
+      }
+  });
+  sortedDateList2.forEach((idDa2, index1) => {
+    db.transaction("players").objectStore("players")
+      .get(Number(idDa2.id)).onsuccess = (event) => {
+
+        renderPlayerLevel(event.target.result.playerName, (index1 + 1), idDa2.score2,
+          idDa2.date2, event.target.result.playerColor, 2);
+      }
+  });
+  sortedDateList3.forEach((idDa3, index1) => {
+    db.transaction("players").objectStore("players")
+      .get(Number(idDa3.id)).onsuccess = (event) => {
+
+        renderPlayerLevel(event.target.result.playerName, (index1 + 1), idDa3.score3,
+          idDa3.date3, event.target.result.playerColor, 3);
+      }
+  });
+
+
+
 }
 
 // Visual
@@ -101,14 +168,18 @@ function loadPlayerData() {
 
 }
 
-function renderPlayerLevel(pName, pNumber, pDate, pColor, pLevel) {
+function renderPlayerLevel(pName, pNumber, pScore,pDate, pColor, pLevel) {
   const listContainer = document.getElementById("level" + pLevel + "-container");
   const divListItem = document.createElement("div");
 
   let dateOrNC = new Date(pDate);
 
   if (dateOrNC.valueOf() === 0) {
-    dateOrNC = "---";
+    if(pScore === 0) {
+      dateOrNC = "---";
+    } else {
+      dateOrNC = Math.floor(pScore/60);
+    }
   } else {
     dateOrNC = dateOrNC.toLocaleDateString();
   }
@@ -137,69 +208,7 @@ function renderPlayerLevel(pName, pNumber, pDate, pColor, pLevel) {
 }
 
 
-function fillDateList() {
-  const objectStoreLD = db.transaction("playerLevelData").objectStore("playerLevelData");
 
-  objectStoreLD.openCursor().onsuccess = (event) => {
-    const cursorLD = event.target.result;
-    if (cursorLD) {
-
-
-      dateList.push({
-        id: cursorLD.key,
-        date1: cursorLD.value.completeLevelDate1,
-        date2: cursorLD.value.completeLevelDate2,
-        date3: cursorLD.value.completeLevelDate3
-      });
-
-
-
-      cursorLD.continue();
-    } else {
-      evaluateDateList();
-    }
-
-  }
-}
-function evaluateDateList() {
-
-  const sortedDateList1 = dateList.sort((a, b) => {
-    return Number(b.date1) - Number(a.date1);
-  });
-  const sortedDateList2 = dateList.sort((a, b) => {
-    return Number(b.date2) - Number(a.date2);
-  });
-  const sortedDateList3 = dateList.sort((a, b) => {
-    return Number(b.date3) - Number(a.date3);
-  });
-  sortedDateList1.forEach((idDa1, index1) => {
-    db.transaction("players").objectStore("players")
-      .get(Number(idDa1.id)).onsuccess = (event) => {
-
-        renderPlayerLevel(event.target.result.playerName, (index1 + 1),
-          idDa1.date1, event.target.result.playerColor, 1);
-      }
-  });
-  sortedDateList2.forEach((idDa2, index1) => {
-    db.transaction("players").objectStore("players")
-      .get(Number(idDa2.id)).onsuccess = (event) => {
-
-        renderPlayerLevel(event.target.result.playerName, (index1 + 1),
-          idDa2.date2, event.target.result.playerColor, 2);
-      }
-  });
-  sortedDateList3.forEach((idDa3, index1) => {
-    db.transaction("players").objectStore("players")
-      .get(Number(idDa3.id)).onsuccess = (event) => {
-
-        renderPlayerLevel(event.target.result.playerName, (index1 + 1),
-          idDa3.date3, event.target.result.playerColor, 3);
-      }
-  });
-
-
-
-}
 
 // Helper Method
 function getContrastYIQ(pHexColor) {

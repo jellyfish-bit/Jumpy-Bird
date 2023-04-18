@@ -1,11 +1,9 @@
 :root {
-  --dark_gray: rgb(32, 32, 32);
+  --dark-gray: rgb(32, 32, 32);
   --white: whitesmoke;
   --light-gray: rgb(184, 184, 184);
   --black: rgb(19, 19, 19);
-
-
-
+  
 }
 
 body {
@@ -47,21 +45,106 @@ body {
   color: var(--white);
 }
 
+.horizontal-snap {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  height: calc(180px + 1rem);
+  padding: 1rem;
+  max-width: 180px;
+  overflow-y: auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type: x mandatory;
+}
+
+.horizontal-snap>span {
+  scroll-snap-align: center;
+}
+
+.container-all {
+  display: grid;
+  grid-auto-flow: column;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  gap: 1rem;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: red yellow;
+}
+.container-all {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.container-all::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 .list-container {
-  display: block;
-  max-width: 300px;
-  margin: 10px auto;
-  border: 5px;
+  display: table-row;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  margin: auto;
   border-radius: 10px;
-  background-color: var(--dark_gray);
-  padding: 20px;
+  background-color: var(--dark-gray);
   
-
-
+  scroll-snap-align: center;
+  
+  
 }
 .list-container-heading {
-  font-weight: 700;
+  text-align: center;
+  color: var(--white);
+
+  display: inline-block;
+ 
+  width: 100%;
+  height: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;  
+}
+.list {
+  display: inline-block;
+  width: 100%;
+  height: 63%;
+  overflow-y: scroll;
+  margin: 0px;
+}
+
+.list-selected-dots {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  height: 5%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  font-size: 25px;
   
+}
+.list-dots {
+  margin-inline: 3px;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.back-link {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px auto;
+  max-width: 200px;
+
+  padding-inline: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  color: var(--white);
+  border-radius: 10px;
+  background-color: var(--dark-gray);
+
 }
 .list-item {
   display: flex;

@@ -70,8 +70,12 @@ body {
     border-radius: 10px;
     background-color: var(--contrast-color);
     padding: 20px;
-
-
+}
+.container-heading {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: em;
 }
 
 

@@ -158,12 +158,9 @@ body {
   color: var(--white);
   border: none;
   background-color: var(--dark_gray);
-  font-size: 16px;
+  font-size: 17px;
  
   width: 100%;
-  
-
-
 }
 .preview-profile {
   margin-inline: 20px;

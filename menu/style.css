@@ -28,6 +28,7 @@ body {
   display: block;
   text-align: center;
   color: var(--white);
+  font-size: 2em;
 }
 .player-profile-container {
   display: flex;
@@ -106,8 +107,8 @@ body {
   display: none;
   position: absolute;
   margin: 0px auto;
-  width: 400px;
-  height: 500px;
+  width: clamp(100px, 100%, 400px);
+  height: clamp(300px, 100%, 500px);
   background-color: var(--dark_gray);
   border-radius: 10px;
   padding: 10px;

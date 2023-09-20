@@ -410,6 +410,3 @@ function floorScore(pScore) {
   }
   return Math.floor(pScore/60);
 }
-
-
-

@@ -44,7 +44,10 @@ body {
   display: block;
   margin: 10px auto;
   max-width: 680px;
+  max-height: 640px;
   width: 100%;
+  height: 100%;
+
 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-image: url('../images/flappy-bird-background_long.png');
@@ -70,7 +73,7 @@ body {
   background-color: var(--highlight-color);
   text-decoration: none;
   font-family: serif;
-  font-size: 30px;
+  font-size: clamp(10px, 1.2em, 20px);
   border: 5px;
   border-radius: 10px;
   padding: 5px;
@@ -100,7 +103,7 @@ body {
 }
 .game-end-menu {
   margin: 0px auto;
-  width: 200px;
+  width: clamp(10px, 100%, 200px);
   padding: 20px;
   border: 1px;
   border-radius: 5px;

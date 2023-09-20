@@ -1,7 +1,10 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-const screenWidth = canvas.clientWidth;
-const screenHeight = canvas.clientHeight;
+//const screenWidthS = canvas.clientWidth;
+//const screenHeightS = canvas.clientHeight;
+
+const screenWidth = 680;
+const screenHeight = 640;
 
 const dbName = "PlayerDataBase";
 const request = indexedDB.open(dbName, 6);
@@ -64,8 +67,7 @@ if (levelNumber === 0) {
 }
 
 
-
-dataElement.innerHTML = `LI ${levelNumber}, PC ${pipeCount}, PG ${pipeGapSize}, LS ${pipeSpeed}, ES ${endscore}`;
+//dataElement.innerHTML = `LI ${levelNumber}, PC ${pipeCount}, PG ${pipeGapSize}, LS ${pipeSpeed}, ES ${endscore}`;
 
 let score = 0;
 let bestScore = 0;
@@ -114,7 +116,6 @@ for (let i = 0; i < pipeCount; i++) {
 
       ctx.fillRect(this.x, 0, this.width, upperHeight);
       ctx.fillRect(this.x, screenHeight - lowerHeight, this.width, lowerHeight);
-
     },
     update() {
       this.x += this.speed;
@@ -127,7 +128,7 @@ for (let i = 0; i < pipeCount; i++) {
       }
     },
     getPipeHeights() {
-      let tempUpperHeight = 100 + 40 * this.level;
+      let tempUpperHeight = (screenHeight/4) + 40 * this.level;
       let tempLowerHeight = screenHeight - (tempUpperHeight + this.holeHeight);
       if (this.isTopDestroyed) {
         tempUpperHeight = 10;

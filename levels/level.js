@@ -197,8 +197,12 @@ const bird = {
     this.speed = this.flapForce;
     flapCount = 0;
   },
-  update() {
+  update(dt) {
     this.speed += this.gravity;
+    if(dt < 2 && dt > 0) {
+      dataElement.innerHTML = dt;
+      this.speed = this.speed * dt;
+    }
     this.y += this.speed;
     if (this.y > screenHeight - this.radius) {
       this.y = screenHeight - this.radius;
@@ -301,6 +305,7 @@ function nextLevelButton(pLink) {
 let secondsPassed, ticks;
 let previousTimeStamp;
 let fps;
+let deltaTime = 1;
 
 
 // Game Logic
@@ -309,9 +314,14 @@ function loop(timeStamp) {
     secondsPassed = (timeStamp - previousTimeStamp) / 1000;
 
     previousTimeStamp = timeStamp;
+    fps = Math.round(1 / secondsPassed);
+    deltaTime = 1/(secondsPassed*60);
+
+    drawFps(settings.showFps, fps);
+    dataElement.innerHTML = deltaTime;
 
     ctx.clearRect(0, 0, screenWidth, screenHeight);
-    bird.update();
+    bird.update(deltaTime);
     bird.draw();
     drawMode(settings.easyMode);
     drawCurrentLives(4, 5, 10);
@@ -374,8 +384,6 @@ function loop(timeStamp) {
     updateTopInfo();
 
 
-    fps = Math.round(1 / secondsPassed);
-    drawFps(settings.showFps, fps);
 
   }
   window.requestAnimationFrame(loop);

@@ -93,7 +93,7 @@ function updateBirdImageElement() {
 }
 
 function headAccsPressed(pName) {
-  if (pName == headAccessory) {
+  if (pName === headAccessory) {
     deselectAccs(pName, headSlot);
     headAccessory = "none";
   } else {
@@ -105,7 +105,7 @@ function headAccsPressed(pName) {
   resetUpdateSaveAccsStats();
 }
 function handAccsPressed(pName) {
-  if (pName == handAccessory) {
+  if (pName === handAccessory) {
     deselectAccs(pName, handSlot);
     handAccessory = "none"
   } else {
@@ -134,7 +134,7 @@ function unlockAccs(pSlot, pAccsList) {
   });
 }
 function selectAccs(pName, pSlot) {
-  if (pName == "none") {
+  if (pName === "none") {
     return false;
   }
 
@@ -162,7 +162,7 @@ function deselectAccs(pName, pSlot) {
 
 function deselectAccsExcept(pName, pSlot, pAccsList) {
   pAccsList.forEach(accsName => {
-    if (pName != accsName) {
+    if (pName !== accsName) {
       const accsElement = document.getElementById(accsName + "-" + pSlot);
       accsElement.style.opacity = "0.5";
       accsElement.className = "item-image"

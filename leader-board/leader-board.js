@@ -13,9 +13,9 @@ request.onsuccess = (event) => {
   loadPlayerData();
 }
 
-let scoreList = new Array();
+let scoreList = [];
 
-const dateList = new Array();
+const dateList = [];
 
 
 // Logic

@@ -342,7 +342,7 @@ function loop(timeStamp) {
       pipes[i].update();
       if (isEndless) {
         pipes[i].updateSpeed(calcPipeSpeed(score));
-      };
+      }
       const upperLowerPipe = pipes[i].getPipes();
       const pipeI = pipes[i];
       const upperPipe = upperLowerPipe[0];
